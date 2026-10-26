@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0E7C86">
+<meta name="description" content="Ruang kerja karier lokal SuperWork dengan model 9router, CV, sumber lowongan, dan persiapan lamaran.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%230E7C86'/%3E%3Cpath d='m10 22 7 7 14-18M10 13h10' fill='none' stroke='%23FFFFFF' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>SuperWork — Beranda</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#main-content">Lewati ke konten utama</a>
+<button class="sidebar-shade" id="sidebar-shade" aria-label="Tutup navigasi"></button>
+<aside class="sidebar" id="sidebar" aria-label="Navigasi utama">
+  <a class="brand" href="#beranda" aria-label="SuperWork Beranda"><span class="brandmark" data-icon="brand"></span><span>super<em>work</em><span style="color:#b4c893">.</span></span></a>
+  <div class="nav-label">RUANG KERJA</div>
+  <nav>
+    <a class="nav-link" href="#beranda" data-page="beranda"><span data-icon="home"></span>Beranda</a>
+    <a class="nav-link" href="#profil" data-page="profil"><span data-icon="user"></span>Profil & CV<span class="nav-count" id="profile-nav-count">CV</span></a>
+    <a class="nav-link" href="#lowongan" data-page="lowongan"><span data-icon="search"></span>Cari lowongan<span class="nav-count" id="job-nav-count">0</span></a>
+    <a class="nav-link" href="#lamaran" data-page="lamaran"><span data-icon="board"></span>Lamaran saya<span class="nav-count" id="apps-nav-count">0</span></a>
+  </nav>
+  <div class="nav-label">PERSIAPAN</div>
+  <nav>
+    <a class="nav-link" href="#dokumen" data-page="dokumen"><span data-icon="file"></span>Dokumen lamaran</a>
+    <a class="nav-link" href="#wawancara" data-page="wawancara"><span data-icon="mic"></span>Wawancara</a>
+    <a class="nav-link" href="#belajar" data-page="belajar"><span data-icon="book"></span>Rencana belajar</a>
+  </nav>
+  <div class="nav-label">ASISTEN</div>
+  <nav>
+    <a class="nav-link" href="#asisten" data-page="asisten"><span data-icon="sparkles"></span>Asisten AI<span class="badge green" style="margin-left:auto;font-size:8px">AI</span></a>
+    <a class="nav-link" href="#aktivitas" data-page="aktivitas"><span data-icon="activity"></span>Aktivitas</a>
+  </nav>
+  <div class="nav-spacer"></div>
+  <a class="nav-link" href="#integrasi" data-page="integrasi"><span data-icon="link"></span>Integrasi portal</a>
+  <a class="nav-link" href="#pengaturan" data-page="pengaturan"><span data-icon="settings"></span>Pengaturan</a>
+  <a class="side-model" href="#pengaturan"><div class="side-model-head"><span data-icon="router"></span>9router lokal <span class="badge" style="margin-left:auto;font-size:8px" id="router-nav-status">MENUNGGU</span></div><strong id="side-model-name">Belum dipilih</strong><p>9router lokal</p></a>
+  <a class="side-user" href="#profil"><span class="avatar">SW</span><div><strong id="side-user-name">Ruang kerja pribadi</strong><span class="small muted">Ruang kerja pribadi</span></div><span data-icon="chevrons"></span></a>
+</aside>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-left"><button class="icon-button menu-button" id="menu-button" aria-label="Buka navigasi" aria-expanded="false"><span data-icon="menu"></span></button><div class="breadcrumb"><span class="workspace-crumb">Workspace pribadi</span><span class="crumb-divider">/</span><strong id="breadcrumb-page">Beranda</strong></div></div>
+    <div class="top-actions"><button class="global-search" data-action="palette" aria-label="Cari di ruang kerja, Control K"><span data-icon="search"></span><span>Cari di ruang kerjamu...</span><kbd>Ctrl K</kbd></button><span class="demo-tag" id="save-status">Memuat…</span><button class="icon-button" data-action="notifications" aria-label="Lihat notifikasi"><span data-icon="bell"></span><i class="notification-dot"></i></button><a class="avatar" href="#profil" aria-label="Buka profil kandidat">SW</a></div>
+  </header>
+  <div id="connection-alert" class="connection-alert" role="alert" hidden></div><main class="content" id="main-content" tabindex="-1"></main>
+</div>
+<nav class="mobile-nav" aria-label="Navigasi cepat"><a href="#beranda" data-page="beranda"><span data-icon="home"></span>Beranda</a><a href="#lowongan" data-page="lowongan"><span data-icon="search"></span>Lowongan</a><a href="#lamaran" data-page="lamaran"><span data-icon="board"></span>Lamaran</a><a href="#asisten" data-page="asisten"><span data-icon="sparkles"></span>Asisten AI</a></nav>
+<dialog id="detail-dialog" aria-labelledby="dialog-title"></dialog>
+<dialog id="palette-dialog" class="palette" aria-label="Cari halaman atau lowongan"><div class="palette-search"><span data-icon="search"></span><input id="palette-input" type="search" placeholder="Cari halaman atau lowongan..." aria-label="Cari halaman atau lowongan"><button class="icon-button" data-action="close-palette" aria-label="Tutup pencarian"><span data-icon="close"></span></button></div><div class="palette-list" id="palette-list"></div><div class="palette-footer">Tab untuk berpindah · Enter untuk membuka · Esc untuk menutup</div></dialog>
+<div class="toast-region" id="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+<div id="print-area"></div>
+<noscript><p style="padding:40px">Aktifkan JavaScript untuk menggunakan dashboard SuperWork.</p></noscript>
+<script src="/app.js" defer></script>
+</body>
+</html>

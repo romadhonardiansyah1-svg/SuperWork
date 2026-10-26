@@ -1,0 +1,5 @@
+# Install with .venv/Scripts/python.exe -m pip install -r requirements-dashboard.txt
+reportlab==5.1.0
+pypdf==6.21.2
+Pillow==13.0.0
+playwright==1.60.0
